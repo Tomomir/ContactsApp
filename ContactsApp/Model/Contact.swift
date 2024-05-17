@@ -19,3 +19,11 @@ struct Contact: Identifiable {
     
     var isFavourite: Bool
 }
+
+// MARK: - Extensions
+
+extension Contact {
+    static var mockedContact: Contact {
+        return Contact(id: UUID(), firstName: "John", lastName: "Doe", phoneNumber: "123456789", isFavourite: true)
+    }
+}

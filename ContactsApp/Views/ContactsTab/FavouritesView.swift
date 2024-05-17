@@ -7,12 +7,32 @@
 
 import SwiftUI
 
-struct FavouritesView: View {
+struct FavouritesView<ContactsData: ContactsDataSource>: View {
+    
+    // MARK: - Properties
+
+    @EnvironmentObject private var contacts: ContactsData
+    @State private var selectedContact: Contact?
+
+    // MARK: - Lifecycle
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(contacts.contacts.filter { $0.isFavourite }) { contact in
+                    Button(action: {
+                        selectedContact = contact
+                    }) {
+                        ContactRowView(contact: contact)
+                    }
+                }
+            }
+            .navigationTitle("FAVOURITES")
+        }
     }
 }
 
 #Preview {
-    FavouritesView()
+    FavouritesView<ContactsObservableMock>()
+        .environmentObject(ContactsObservableMock())
 }

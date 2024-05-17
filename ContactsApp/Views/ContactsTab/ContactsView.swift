@@ -11,7 +11,7 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
     
     // MARK: - Properties
 
-    @EnvironmentObject var contacts: ContactsData
+    @EnvironmentObject private var contacts: ContactsData
 
     @State private var selectedContact: Contact?
 
@@ -24,16 +24,7 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
                     Button(action: {
                         selectedContact = contact
                     }) {
-                        HStack {
-                            Text("\(contact.firstName) \(contact.lastName)")
-                                .foregroundColor(.primary)
-                            Spacer()
-                            if contact.isFavourite {
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                            }
-                        }
-                        .padding(.vertical, 6)
+                        ContactRowView(contact: contact)
                     }
                 }
             }
