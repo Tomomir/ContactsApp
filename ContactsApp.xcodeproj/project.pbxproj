@@ -23,6 +23,8 @@
 		84C109E92BF798AF009A8FDE /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109E82BF798AF009A8FDE /* ContactRowView.swift */; };
 		84C109EB2BF79C98009A8FDE /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109EA2BF79C98009A8FDE /* ContactDetailView.swift */; };
 		84C109ED2BF7A80C009A8FDE /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109EC2BF7A80C009A8FDE /* FloatingLabelTextField.swift */; };
+		84C109F02BF7B52D009A8FDE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */; };
+		84C109F32BF7B553009A8FDE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109F22BF7B553009A8FDE /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		84C109E82BF798AF009A8FDE /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
 		84C109EA2BF79C98009A8FDE /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		84C109EC2BF7A80C009A8FDE /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
+		84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		84C109F22BF7B553009A8FDE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 		84667BE02BF77A1E004A6DDA /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				84C109F12BF7B53E009A8FDE /* Extensions */,
+				84C109EE2BF7B50F009A8FDE /* Localization */,
 				84C109E72BF79890009A8FDE /* UI */,
 				84667BE12BF77A41004A6DDA /* ViewModifiers */,
 			);
@@ -181,6 +187,22 @@
 				84C109EC2BF7A80C009A8FDE /* FloatingLabelTextField.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		84C109EE2BF7B50F009A8FDE /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		84C109F12BF7B53E009A8FDE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84C109F22BF7B553009A8FDE /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +247,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sk,
 			);
 			mainGroup = 84667BA72BF773EC004A6DDA;
 			productRefGroup = 84667BB12BF773EC004A6DDA /* Products */;
@@ -243,6 +266,7 @@
 			files = (
 				84667BBB2BF773ED004A6DDA /* Preview Assets.xcassets in Resources */,
 				84667BB82BF773ED004A6DDA /* Assets.xcassets in Resources */,
+				84C109F02BF7B52D009A8FDE /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +289,7 @@
 				84667BC42BF774FC004A6DDA /* AppCoordinator.swift in Sources */,
 				84667BE52BF77AC9004A6DDA /* ContactsView.swift in Sources */,
 				84667BEC2BF782A4004A6DDA /* CoreDataService.swift in Sources */,
+				84C109F32BF7B553009A8FDE /* String.swift in Sources */,
 				84667BEA2BF78241004A6DDA /* ContactsDataModel.xcdatamodeld in Sources */,
 				84667BC22BF774E2004A6DDA /* AppDelegate.swift in Sources */,
 			);

@@ -17,15 +17,15 @@ enum ContactDetailViewMode {
     var title: String {
         switch self {
         case .display:
-            return "CONTACT_DETAIL"
+            return "CONTACT_DETAIL".localized
         case .new(let isFavourite):
             if isFavourite {
-                return "NEW_FAVOURITE_CONTACT"
+                return "NEW_FAVOURITE_CONTACT".localized
             } else {
-                return "NEW_CONTACT"
+                return "NEW_CONTACT".localized
             }
         case .edit:
-            return "EDIT_CONTACT"
+            return "EDIT_CONTACT".localized
         }
     }
 }
@@ -79,10 +79,11 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
 
     private var content: some View {
         Form {
-            Section(header: Text("CONTACT_DETAILS")) {
-                FloatingLabelTextField(text: $firstName, placeholder: "FIRST_NAME")
-                FloatingLabelTextField(text: $lastName, placeholder: "LAST_NAME")
-                FloatingLabelTextField(text: $phoneNumber, placeholder: "PHONE_NUMBER")
+            
+            Section {
+                FloatingLabelTextField(text: $firstName, placeholder: "FIRST_NAME".localized)
+                FloatingLabelTextField(text: $lastName, placeholder: "LAST_NAME".localized)
+                FloatingLabelTextField(text: $phoneNumber, placeholder: "PHONE_NUMBER".localized)
             }
             
             if contact != nil {

@@ -14,9 +14,9 @@ enum ContactsViewMode {
     var title: String {
         switch self {
         case .all:
-            return "CONTACTS"
+            return "CONTACTS".localized
         case .favourites:
-            return "FAVOURITES"
+            return "FAVOURITES".localized
         }
     }
 }
