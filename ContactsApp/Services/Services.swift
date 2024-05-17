@@ -11,9 +11,11 @@ final class Services {
     
     // MARK: - Properties
         
+    let coreDataService: CoreDataService
+
     // MARK: - Lifecycle
     
     init() {
-        
+        coreDataService = CoreDataService()
     }
 }

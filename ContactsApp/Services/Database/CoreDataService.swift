@@ -22,7 +22,7 @@ class CoreDataService {
     // MARK: - Init
     
     init() {
-        persistentContainer = NSPersistentContainer(name: "ContactsModel")
+        persistentContainer = NSPersistentContainer(name: "ContactsDataModel")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")

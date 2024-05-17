@@ -18,6 +18,7 @@ private struct EnvironmentViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .environmentObject(objects.contacts)
     }
 }
 

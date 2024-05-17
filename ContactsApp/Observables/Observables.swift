@@ -19,6 +19,8 @@ final class Observables {
     
     private let services: Services
         
+    let contacts: ContactsObservable
+    
     weak var appCoordinator: AppCoordinatorDelegate?
     
     // MARK: - Init
@@ -26,6 +28,7 @@ final class Observables {
     init(services: Services) {
         self.services = services
         
+        contacts = ContactsObservable(coreDataService: services.coreDataService)
     }
 }
 

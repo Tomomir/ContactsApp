@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct ContactsTabBarView: View {
+struct ContactsTabBarView<ContactsData: ContactsDataSource>: View {
     
     // MARK: - Properties
-        
+    
+    @EnvironmentObject private var contacts: ContactsData
+    
     // MARK: - Lifecycle
     
     var body: some View {
         TabView {
-            ContactsView()
+            ContactsView<ContactsData>()
                 .tabItem {
                     Label("CONTACTS", systemImage: "person.3.fill")
                 }
@@ -29,6 +31,7 @@ struct ContactsTabBarView: View {
 }
 
 #Preview {
-    ContactsTabBarView()
+    ContactsTabBarView<ContactsObservableMock>()
+        .environmentObject(ContactsObservableMock())
 }
 

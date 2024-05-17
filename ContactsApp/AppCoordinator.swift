@@ -18,7 +18,8 @@ final class AppCoordinator {
     private let observableObjects: Observables
     
     private var contactsTabBarView: some View {
-        ContactsTabBarView()
+        ContactsTabBarView<ContactsObservable>()
+            .inject(objects: observableObjects)
     }
     
     // MARK: - Init

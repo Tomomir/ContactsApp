@@ -7,12 +7,43 @@
 
 import SwiftUI
 
-struct ContactsView: View {
+struct ContactsView<ContactsData: ContactsDataSource>: View {
+    
+    // MARK: - Properties
+
+    @EnvironmentObject var contacts: ContactsData
+
+    @State private var selectedContact: Contact?
+
+    // MARK: - Lifecycle
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(contacts.contacts) { contact in
+                    Button(action: {
+                        selectedContact = contact
+                    }) {
+                        HStack {
+                            Text("\(contact.firstName) \(contact.lastName)")
+                                .foregroundColor(.primary)
+                            Spacer()
+                            if contact.isFavourite {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                            }
+                        }
+                        .padding(.vertical, 6)
+                    }
+                }
+            }
+            .navigationTitle("CONTACTS")
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    ContactsView()
+    ContactsView<ContactsObservableMock>()
+        .environmentObject(ContactsObservableMock())
 }
