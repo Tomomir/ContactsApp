@@ -194,4 +194,5 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
 
 #Preview {
     ContactDetailView<ContactsObservableMock>(mode: .display(Contact.mockedContact))
+        .environmentObject(ContactsObservableMock())
 }
