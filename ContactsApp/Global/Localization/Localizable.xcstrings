@@ -144,6 +144,22 @@
         }
       }
     },
+    "FAVOURITE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Favourite"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pridať Obľúbený"
+          }
+        }
+      }
+    },
     "FAVOURITES" : {
       "localizations" : {
         "en" : {
@@ -257,6 +273,22 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Uložiť"
+          }
+        }
+      }
+    },
+    "UNFAVOURITE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Favourite"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odstrániť Obľúbený"
           }
         }
       }

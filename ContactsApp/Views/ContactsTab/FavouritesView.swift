@@ -16,6 +16,7 @@ struct FavouritesView<ContactsData: ContactsDataSource>: View {
     @State private var showingAddContactView = false
     @State private var selectedContact: Contact?
 
+    
     // MARK: - Lifecycle
     
     var body: some View {
@@ -31,10 +32,10 @@ struct FavouritesView<ContactsData: ContactsDataSource>: View {
             }
             .navigationTitle("FAVOURITES")
             .navigationBarItems(trailing: addButton)
-            .sheet(isPresented: $showingAddContactView) {
+            .fullScreenCover(isPresented: $showingAddContactView) {
                 ContactDetailView<ContactsData>(mode: .new(isFavourite: true))
             }
-            .sheet(item: $selectedContact) { contact in
+            .fullScreenCover(item: $selectedContact) { contact in
                 ContactDetailView<ContactsData>(mode: .display(contact))
             }
         }

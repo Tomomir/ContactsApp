@@ -12,7 +12,6 @@ import SwiftUI
 enum ContactDetailViewMode {
     case display(Contact)
     case new(isFavourite: Bool)
-    case edit(Contact)
 
     var title: String {
         switch self {
@@ -24,8 +23,6 @@ enum ContactDetailViewMode {
             } else {
                 return "NEW_CONTACT".localized
             }
-        case .edit:
-            return "EDIT_CONTACT".localized
         }
     }
 }
@@ -44,6 +41,24 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
     @State private var lastName: String
     @State private var phoneNumber: String
     @State private var isFavourite: Bool
+    @State private var isEditing: Bool = false
+    
+    @FocusState private var focusedField: Field?
+
+    private enum Field: Hashable {
+        case firstName, lastName, phoneNumber
+    }
+    
+    private var isFormValid: Bool {
+        return !firstName.isEmpty || !lastName.isEmpty
+    }
+    
+    private var isDisplayMode: Bool {
+        if case .display = mode {
+            return true
+        }
+        return false
+    }
     
     // MARK: - Init
     
@@ -56,7 +71,7 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
             _lastName = State(initialValue: "")
             _phoneNumber = State(initialValue: "")
             _isFavourite = State(initialValue: isFavourite)
-        case .edit(let contact), .display(let contact):
+        case .display(let contact):
             self.contact = contact
             _firstName = State(initialValue: contact.firstName)
             _lastName = State(initialValue: contact.lastName)
@@ -71,7 +86,7 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
         NavigationView {
             content
                 .navigationBarTitle(mode.title, displayMode: .inline)
-                .navigationBarItems(leading: closeButton)
+                .navigationBarItems(leading: leadingButton, trailing: trailingButton)
         }
     }
     
@@ -79,34 +94,100 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
 
     private var content: some View {
         Form {
-            
             Section {
-                FloatingLabelTextField(text: $firstName, placeholder: "FIRST_NAME".localized)
-                FloatingLabelTextField(text: $lastName, placeholder: "LAST_NAME".localized)
-                FloatingLabelTextField(text: $phoneNumber, placeholder: "PHONE_NUMBER".localized)
+                TextField("FIRST_NAME".localized, text: $firstName)
+                    .disabled(isDisplayMode && !isEditing)
+                    .textContentType(.givenName)
+                    .focused($focusedField, equals: .firstName)
+                    .autocorrectionDisabled()
+                    .submitLabel(.next)
+                    .onSubmit {
+                        focusedField = .lastName
+                    }
+                TextField("LAST_NAME".localized, text: $lastName)
+                    .disabled(isDisplayMode && !isEditing)
+                    .textContentType(.familyName)
+                    .focused($focusedField, equals: .lastName)
+                    .autocorrectionDisabled()
+                    .submitLabel(.next)
+                    .onSubmit {
+                        focusedField = .phoneNumber
+                    }
+                TextField("PHONE_NUMBER".localized, text: $phoneNumber)
+                    .disabled(isDisplayMode && !isEditing)
+                    .textContentType(.telephoneNumber)
+                    .focused($focusedField, equals: .phoneNumber)
+                    .keyboardType(.phonePad)
+                    .autocorrectionDisabled()
             }
             
-            if contact != nil {
+            if isDisplayMode && isEditing {
                 Section {
-                    Button(action: {
-                        // Handle delete action here
-                        
-                    }) {
-                        Text("DELETE_CONTACT")
-                            .foregroundColor(.red)
-                    }
+                    deleteButton
                 }
             }
         }
     }
     
+    
     // MARK: - Buttons
     
-    private var closeButton: some View {
+    private var leadingButton: some View {
         Button(action: {
+            if isEditing {
+                // Cancel edit
+                if case .display(let contact) = mode {
+                    firstName = contact.firstName
+                    lastName = contact.lastName
+                    phoneNumber = contact.phoneNumber
+                    isFavourite = contact.isFavourite
+                }
+                isEditing.toggle()
+            } else {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }) {
+            Text(isEditing ? "CANCEL" : "CLOSE")
+        }
+    }
+    
+    private var trailingButton: some View {
+        switch mode {
+        case .display:
+            return Button(action: {
+                if isEditing {
+                    contacts.updateContact(contact: contact!,
+                                           firstName: firstName,
+                                           lastName: lastName,
+                                           phoneNumber: phoneNumber,
+                                           isFavourite: isFavourite)
+                }
+                isEditing.toggle()
+            }) {
+                Text(isEditing ? "DONE" : "EDIT")
+            }
+            .disabled(isEditing && !isFormValid)
+        case .new:
+            return Button(action: {
+                contacts.addContact(firstName: firstName,
+                                    lastName: lastName,
+                                    phoneNumber: phoneNumber,
+                                    isFavourite: isFavourite)
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("SAVE")
+            }
+            .disabled(!isFormValid)
+        }
+    }
+    
+    private var deleteButton: some View {
+        Button(action: {
+            contacts.deleteContact(contact: contact!)
             presentationMode.wrappedValue.dismiss()
         }) {
-            Text("CLOSE")
+            Text("DELETE_CONTACT")
+                .foregroundColor(.red)
         }
     }
 }
