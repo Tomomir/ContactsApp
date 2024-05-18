@@ -1,13 +1,13 @@
 //
-//  ContactsView.swift
+//  FavouritesView.swift
 //  ContactsApp
 //
-//  Created by Tomas Pecuch on 17/05/2024.
+//  Created by Tomas Pecuch on 18/05/2024.
 //
 
 import SwiftUI
 
-struct ContactsView<ContactsData: ContactsDataSource>: View {
+struct FavouritesView<ContactsData: ContactsDataSource>: View {
     
     // MARK: - Properties
 
@@ -15,13 +15,13 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
     
     @State private var showingAddContactView = false
     @State private var selectedContact: Contact?
-    
-    // MARK: - Lifecycle
 
+    // MARK: - Lifecycle
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(contacts.contacts) { contact in
+                ForEach(contacts.contacts.filter { $0.isFavourite }) { contact in
                     Button(action: {
                         selectedContact = contact
                     }) {
@@ -29,16 +29,15 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
                     }
                 }
             }
-            .navigationTitle("CONTACTS")
+            .navigationTitle("FAVOURITES")
             .navigationBarItems(trailing: addButton)
+            .sheet(isPresented: $showingAddContactView) {
+                ContactDetailView<ContactsData>(mode: .new(isFavourite: true))
+            }
             .sheet(item: $selectedContact) { contact in
                 ContactDetailView<ContactsData>(mode: .display(contact))
             }
-            .sheet(isPresented: $showingAddContactView) {
-                ContactDetailView<ContactsData>(mode: .new(isFavourite: false))
-            }
         }
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     // MARK: - Buttons
@@ -53,6 +52,6 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
 }
 
 #Preview {
-    ContactsView<ContactsObservableMock>()
+    FavouritesView<ContactsObservableMock>()
         .environmentObject(ContactsObservableMock())
 }

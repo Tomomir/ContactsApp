@@ -22,7 +22,7 @@ struct ContactsTabBarView<ContactsData: ContactsDataSource>: View {
                     Label("CONTACTS", systemImage: "person.3.fill")
                 }
             
-            ContactsView<ContactsData>(mode: .favourites)
+            FavouritesView<ContactsData>()
                 .tabItem {
                     Label("FAVOURITES", systemImage: "star.fill")
                 }

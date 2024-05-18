@@ -25,6 +25,7 @@
 		84C109ED2BF7A80C009A8FDE /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109EC2BF7A80C009A8FDE /* FloatingLabelTextField.swift */; };
 		84C109F02BF7B52D009A8FDE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */; };
 		84C109F32BF7B553009A8FDE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109F22BF7B553009A8FDE /* String.swift */; };
+		84C109F52BF8BB2E009A8FDE /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109F42BF8BB2E009A8FDE /* FavouritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		84C109EC2BF7A80C009A8FDE /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		84C109F22BF7B553009A8FDE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		84C109F42BF8BB2E009A8FDE /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				84667BC92BF77667004A6DDA /* ContactsTabBarView.swift */,
 				84667BE42BF77AC9004A6DDA /* ContactsView.swift */,
+				84C109F42BF8BB2E009A8FDE /* FavouritesView.swift */,
 				84C109EA2BF79C98009A8FDE /* ContactDetailView.swift */,
 			);
 			path = ContactsTab;
@@ -279,6 +282,7 @@
 			files = (
 				84667BD02BF77702004A6DDA /* Observables.swift in Sources */,
 				84667BCD2BF776B6004A6DDA /* Contact.swift in Sources */,
+				84C109F52BF8BB2E009A8FDE /* FavouritesView.swift in Sources */,
 				84C109EB2BF79C98009A8FDE /* ContactDetailView.swift in Sources */,
 				84C109E92BF798AF009A8FDE /* ContactRowView.swift in Sources */,
 				84C109ED2BF7A80C009A8FDE /* FloatingLabelTextField.swift in Sources */,
