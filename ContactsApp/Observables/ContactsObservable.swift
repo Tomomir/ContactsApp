@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Protocols
 
 protocol ContactsDataSource: ObservableObject {
-    var contacts: [Contact] { get set }
+    var contacts: [Contact] { get }
 
     func loadContacts()
     func addContact(firstName: String, lastName: String, phoneNumber: String, isFavourite: Bool)
