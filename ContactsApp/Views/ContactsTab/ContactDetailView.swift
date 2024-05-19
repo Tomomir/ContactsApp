@@ -13,15 +13,15 @@ enum ContactDetailViewMode {
     case display(Contact)
     case new(isFavourite: Bool)
 
-    var title: String {
+    var title: Text {
         switch self {
         case .display:
-            return "CONTACT_DETAIL".localized
+            return Text("CONTACT_DETAIL")
         case .new(let isFavourite):
             if isFavourite {
-                return "NEW_FAVOURITE_CONTACT".localized
+                return Text("NEW_FAVOURITE_CONTACT")
             } else {
-                return "NEW_CONTACT".localized
+                return Text("NEW_CONTACT")
             }
         }
     }
@@ -95,7 +95,7 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
     private var content: some View {
         Form {
             Section {
-                TextField("FIRST_NAME".localized, text: $firstName)
+                TextField("FIRST_NAME", text: $firstName)
                     .disabled(isDisplayMode && !isEditing)
                     .textContentType(.givenName)
                     .focused($focusedField, equals: .firstName)
@@ -104,7 +104,7 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
                     .onSubmit {
                         focusedField = .lastName
                     }
-                TextField("LAST_NAME".localized, text: $lastName)
+                TextField("LAST_NAME", text: $lastName)
                     .disabled(isDisplayMode && !isEditing)
                     .textContentType(.familyName)
                     .focused($focusedField, equals: .lastName)
@@ -113,7 +113,7 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
                     .onSubmit {
                         focusedField = .phoneNumber
                     }
-                TextField("PHONE_NUMBER".localized, text: $phoneNumber)
+                TextField("PHONE_NUMBER", text: $phoneNumber)
                     .disabled(isDisplayMode && !isEditing)
                     .textContentType(.telephoneNumber)
                     .focused($focusedField, equals: .phoneNumber)
