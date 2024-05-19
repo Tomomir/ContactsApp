@@ -87,6 +87,11 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
             content
                 .navigationBarTitle(mode.title, displayMode: .inline)
                 .navigationBarItems(leading: leadingButton, trailing: trailingButton)
+                .onAppear {
+                    if case .new = mode {
+                        focusedField = .firstName
+                    }
+                }
         }
     }
     
