@@ -45,6 +45,7 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: - Subviews

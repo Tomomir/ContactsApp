@@ -27,6 +27,7 @@ struct ContactsTabBarView<ContactsData: ContactsDataSource>: View {
                     Label("FAVOURITES", systemImage: "star.fill")
                 }
         }
+        .tabViewStyle(DefaultTabViewStyle())
     }
 }
 

@@ -39,6 +39,7 @@ struct FavouritesView<ContactsData: ContactsDataSource>: View {
                 ContactDetailView<ContactsData>(mode: .display(contact))
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: - Buttons
