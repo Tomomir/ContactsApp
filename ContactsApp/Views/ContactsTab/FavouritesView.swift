@@ -15,7 +15,6 @@ struct FavouritesView<ContactsData: ContactsDataSource>: View {
     
     @State private var showingAddContactView = false
     @State private var selectedContact: Contact?
-
     
     // MARK: - Lifecycle
     

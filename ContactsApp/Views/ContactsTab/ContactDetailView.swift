@@ -129,7 +129,6 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
         }
     }
     
-    
     // MARK: - Buttons
     
     private var leadingButton: some View {

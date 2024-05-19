@@ -19,6 +19,7 @@ class CoreDataService {
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    
     // MARK: - Init
     
     init() {

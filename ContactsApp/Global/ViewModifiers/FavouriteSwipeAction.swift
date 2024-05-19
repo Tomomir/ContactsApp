@@ -10,9 +10,14 @@ import Foundation
 import SwiftUI
 
 struct FavouriteSwipeAction<ContactsData: ContactsDataSource>: ViewModifier {
+    
+    // MARK: - Properties
+    
     @ObservedObject var contacts: ContactsData
     
     var contact: Contact
+    
+    // MARK: - Lifecycle
     
     func body(content: Content) -> some View {
         content
@@ -30,6 +35,8 @@ struct FavouriteSwipeAction<ContactsData: ContactsDataSource>: ViewModifier {
             }
     }
 }
+
+// MARK: - Extensions
 
 extension View {
     func favouriteSwipeActions<ContactsData: ContactsDataSource>(contacts: ContactsData, contact: Contact) -> some View {

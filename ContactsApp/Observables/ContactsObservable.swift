@@ -47,7 +47,6 @@ class ContactsObservable: ContactsDataSource {
     }
     
     func updateContact(contact: Contact, firstName: String, lastName: String, phoneNumber: String, isFavourite: Bool) {
-        // Update contact in Core Data
         coreDataService.updateContact(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, isFavourite: isFavourite)
         loadContacts() // Reload contacts after updating
     }
