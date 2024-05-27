@@ -23,6 +23,7 @@
 		84753E172BF8EA5000A2EAD6 /* FavouriteSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84753E162BF8EA5000A2EAD6 /* FavouriteSwipeAction.swift */; };
 		84753E232BFF760800A2EAD6 /* ContactsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84753E222BFF760800A2EAD6 /* ContactsAppTests.swift */; };
 		84753E2F2C04CFB500A2EAD6 /* ContactsObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84753E2E2C04CFB500A2EAD6 /* ContactsObservableTests.swift */; };
+		84753E322C04DE2900A2EAD6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 84753E312C04DE2900A2EAD6 /* .swiftlint.yml */; };
 		84C109E92BF798AF009A8FDE /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109E82BF798AF009A8FDE /* ContactRowView.swift */; };
 		84C109EB2BF79C98009A8FDE /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C109EA2BF79C98009A8FDE /* ContactDetailView.swift */; };
 		84C109F02BF7B52D009A8FDE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */; };
@@ -58,6 +59,7 @@
 		84753E202BFF760800A2EAD6 /* ContactsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84753E222BFF760800A2EAD6 /* ContactsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsAppTests.swift; sourceTree = "<group>"; };
 		84753E2E2C04CFB500A2EAD6 /* ContactsObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsObservableTests.swift; sourceTree = "<group>"; };
+		84753E312C04DE2900A2EAD6 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		84C109E82BF798AF009A8FDE /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
 		84C109EA2BF79C98009A8FDE /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		84C109EF2BF7B52D009A8FDE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				84667BB22BF773EC004A6DDA /* ContactsApp */,
 				84753E212BFF760800A2EAD6 /* ContactsAppTests */,
+				84753E312C04DE2900A2EAD6 /* .swiftlint.yml */,
 				84667BB12BF773EC004A6DDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84753E322C04DE2900A2EAD6 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

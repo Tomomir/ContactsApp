@@ -1,0 +1,45 @@
+# SwiftLint Configuration
+
+# Opt-In Rules
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - joined_default_parameter
+  - let_var_whitespace
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - unused_optional_binding
+
+# Disabled Rules
+disabled_rules:
+  - trailing_whitespace
+  - function_body_length
+  - type_body_length
+
+# Custom Configuration
+line_length: 160
+
+# Included & Excluded Files
+included:
+  - ContactsApp
+  - ContactsAppTests
+
+excluded:
+  - Pods
+  - Carthage
+  - ContactsApp/Generated
+
+# Custom Rules
+custom_rules:
+  force_try:
+    included: ".*\\.swift"
+    name: "No Force Try"
+    regex: "try!"
+    message: "Force try should be avoided."
+    severity: error

@@ -42,12 +42,19 @@ class ContactsObservable: ContactsDataSource {
     }
 
     func addContact(firstName: String, lastName: String, phoneNumber: String, isFavourite: Bool = false) {
-        coreDataService.addContact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, isFavourite: isFavourite)
+        coreDataService.addContact(firstName: firstName,
+                                   lastName: lastName,
+                                   phoneNumber: phoneNumber,
+                                   isFavourite: isFavourite)
         loadContacts() // Reload contacts after adding a new one
     }
     
     func updateContact(contact: Contact, firstName: String, lastName: String, phoneNumber: String, isFavourite: Bool) {
-        coreDataService.updateContact(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, isFavourite: isFavourite)
+        coreDataService.updateContact(contact: contact,
+                                      firstName: firstName,
+                                      lastName: lastName,
+                                      phoneNumber: phoneNumber,
+                                      isFavourite: isFavourite)
         loadContacts() // Reload contacts after updating
     }
     
@@ -57,7 +64,11 @@ class ContactsObservable: ContactsDataSource {
     }
 
     func toggleFavourite(contact: Contact) {
-        updateContact(contact: contact, firstName: contact.firstName, lastName: contact.lastName, phoneNumber: contact.phoneNumber, isFavourite: !contact.isFavourite)
+        updateContact(contact: contact,
+                      firstName: contact.firstName,
+                      lastName: contact.lastName,
+                      phoneNumber: contact.phoneNumber,
+                      isFavourite: !contact.isFavourite)
         loadContacts() // Reload contacts after toggling favourite
     }
 }
