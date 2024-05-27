@@ -22,13 +22,18 @@ class CoreDataService {
     
     // MARK: - Init
     
-    init() {
-        persistentContainer = NSPersistentContainer(name: "ContactsDataModel")
-        persistentContainer.loadPersistentStores { (description, error) in
+    init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+    }
+    
+    convenience init() {
+        let container = NSPersistentContainer(name: "ContactsDataModel")
+        container.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")
             }
         }
+        self.init(persistentContainer: container)
     }
 
     // MARK: - Methods
@@ -102,5 +107,29 @@ class CoreDataService {
             print("Error fetching contact: \(error)")
             return nil
         }
+    }
+}
+
+class CoreDataServiceMock: CoreDataService {
+    
+    var contacts: [Contact] = []
+
+    override func fetchContacts() -> [Contact] {
+        return contacts
+    }
+
+    override func addContact(firstName: String, lastName: String, phoneNumber: String, isFavourite: Bool) {
+        let contact = Contact(id: UUID(), firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, isFavourite: isFavourite)
+        contacts.append(contact)
+    }
+
+    override func updateContact(contact: Contact, firstName: String, lastName: String, phoneNumber: String, isFavourite: Bool) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
+            contacts[index] = Contact(id: contact.id, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, isFavourite: isFavourite)
+        }
+    }
+
+    override func deleteContact(contact: Contact) {
+        contacts.removeAll { $0.id == contact.id }
     }
 }
