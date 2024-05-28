@@ -31,4 +31,3 @@ final class Observables {
         contacts = ContactsObservable(coreDataService: services.coreDataService)
     }
 }
-

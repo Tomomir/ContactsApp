@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 import CoreData
 import SwiftUI
 
@@ -28,9 +27,9 @@ class CoreDataService {
     
     convenience init() {
         let container = NSPersistentContainer(name: "ContactsDataModel")
-        container.loadPersistentStores { (description, error) in
-            if let error = error {
-                fatalError("Unable to load persistent stores: \(error)")
+        container.loadPersistentStores { (_, error) in
+            if let loadError = error {
+                fatalError("Unable to load persistent stores: \(loadError)")
             }
         }
         self.init(persistentContainer: container)

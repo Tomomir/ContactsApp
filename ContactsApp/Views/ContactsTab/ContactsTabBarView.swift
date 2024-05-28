@@ -35,4 +35,3 @@ struct ContactsTabBarView<ContactsData: ContactsDataSource>: View {
     ContactsTabBarView<ContactsObservableMock>()
         .environmentObject(ContactsObservableMock())
 }
-

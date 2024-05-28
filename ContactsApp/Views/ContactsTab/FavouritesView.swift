@@ -24,9 +24,9 @@ struct FavouritesView<ContactsData: ContactsDataSource>: View {
                 ForEach(contacts.contacts.filter { $0.isFavourite }) { contact in
                     Button(action: {
                         selectedContact = contact
-                    }) {
+                    }, label: {
                         ContactRowView(contact: contact)
-                    }
+                    })
                 }
             }
             .navigationTitle("FAVOURITES")
@@ -46,9 +46,9 @@ struct FavouritesView<ContactsData: ContactsDataSource>: View {
     private var addButton: some View {
         Button(action: {
             showingAddContactView = true
-        }) {
+        }, label: {
             Image(systemName: "plus")
-        }
+        })
     }
 }
 

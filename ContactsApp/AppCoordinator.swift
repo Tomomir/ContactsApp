@@ -41,7 +41,7 @@ final class AppCoordinator {
     func show(controller: UIViewController) {
         guard let window = window else { return }
         window.rootViewController = controller
-        UIView.transition(with: window, duration: 0.2,options: .transitionCrossDissolve, animations: nil)
+        UIView.transition(with: window, duration: 0.2, options: .transitionCrossDissolve, animations: nil)
     }
 }
 
@@ -49,7 +49,7 @@ final class AppCoordinator {
 
 extension AppCoordinator: AppCoordinatorDelegate {
     func showContactsTabBar() {
-        let vc = UIHostingController(rootView: contactsTabBarView)
-        show(controller: vc)
+        let hostingController = UIHostingController(rootView: contactsTabBarView)
+        show(controller: hostingController)
     }
 }

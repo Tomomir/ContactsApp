@@ -24,13 +24,13 @@ struct FavouriteSwipeAction<ContactsData: ContactsDataSource>: ViewModifier {
             .swipeActions(edge: .leading) {
                 Button(action: {
                     contacts.toggleFavourite(contact: contact)
-                }) {
+                }, label: {
                     if contact.isFavourite {
                         Label("UNFAVOURITE", systemImage: "star.slash")
                     } else {
                         Label("FAVOURITE", systemImage: "star")
                     }
-                }
+                })
                 .tint(contact.isFavourite ? .gray : .yellow)
             }
     }

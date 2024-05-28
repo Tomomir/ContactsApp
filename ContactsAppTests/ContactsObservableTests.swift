@@ -14,10 +14,12 @@ class ContactsObservableTests: XCTestCase {
     
     // MARK: - Properties
     
+    // swiftlint:disable implicitly_unwrapped_optional
     var coreDataServiceMock: CoreDataServiceMock!
     var contactsObservable: ContactsObservable!
     var cancellables: Set<AnyCancellable>!
-
+    // swiftlint:enable implicitly_unwrapped_optional
+    
     // MARK: - Lifecycle
     
     override func setUpWithError() throws {

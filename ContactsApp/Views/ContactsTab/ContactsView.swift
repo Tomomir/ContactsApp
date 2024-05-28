@@ -55,9 +55,9 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
             ForEach(filteredContacts) { contact in
                 Button(action: {
                     selectedContact = contact
-                }) {
+                }, label: {
                     ContactRowView(contact: contact)
-                }
+                })
                 .favouriteSwipeActions(contacts: contacts, contact: contact)
             }
             .onDelete { indexSet in
@@ -74,9 +74,9 @@ struct ContactsView<ContactsData: ContactsDataSource>: View {
     private var addButton: some View {
         Button(action: {
             showingAddContactView = true
-        }) {
+        }, label: {
             Image(systemName: "plus")
-        }
+        })
     }
 }
 

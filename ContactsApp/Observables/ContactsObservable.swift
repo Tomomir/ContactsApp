@@ -19,7 +19,6 @@ protocol ContactsDataSource: ObservableObject {
     func toggleFavourite(contact: Contact)
 }
 
-
 class ContactsObservable: ContactsDataSource {
     
     // MARK: - Properties
@@ -85,7 +84,7 @@ class ContactsObservableMock: ContactsDataSource {
         Contact(id: UUID(), firstName: "Charlie", lastName: "Brown", phoneNumber: "555666777", isFavourite: false),
         Contact(id: UUID(), firstName: "Daisy", lastName: "Brown", phoneNumber: "777666555", isFavourite: false),
         Contact(id: UUID(), firstName: "Eve", lastName: "White", phoneNumber: "888999000", isFavourite: false),
-        Contact(id: UUID(), firstName: "Frank", lastName: "Black", phoneNumber: "000999888", isFavourite: false),
+        Contact(id: UUID(), firstName: "Frank", lastName: "Black", phoneNumber: "000999888", isFavourite: false)
     ]
     
     // MARK: - Init

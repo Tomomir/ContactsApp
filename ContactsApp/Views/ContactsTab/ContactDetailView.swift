@@ -150,9 +150,9 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
             } else {
                 presentationMode.wrappedValue.dismiss()
             }
-        }) {
+        }, label: {
             Text(isEditing ? "CANCEL" : "CLOSE")
-        }
+        })
     }
     
     private var trailingButton: some View {
@@ -160,17 +160,19 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
         case .display:
             return Button(action: {
                 if isEditing {
-                    contacts.updateContact(contact: contact!,
+                    guard let editedContact = contact else { return }
+                    contacts.updateContact(contact: editedContact,
                                            firstName: firstName,
                                            lastName: lastName,
                                            phoneNumber: phoneNumber,
                                            isFavourite: isFavourite)
                 }
                 isEditing.toggle()
-            }) {
+            }, label: {
                 Text(isEditing ? "DONE" : "EDIT")
-            }
+            })
             .disabled(isEditing && !isFormValid)
+            
         case .new:
             return Button(action: {
                 contacts.addContact(firstName: firstName,
@@ -178,21 +180,22 @@ struct ContactDetailView<ContactsData: ContactsDataSource>: View {
                                     phoneNumber: phoneNumber,
                                     isFavourite: isFavourite)
                 presentationMode.wrappedValue.dismiss()
-            }) {
+            }, label: {
                 Text("SAVE")
-            }
+            })
             .disabled(!isFormValid)
         }
     }
     
     private var deleteButton: some View {
         Button(action: {
-            contacts.deleteContact(contact: contact!)
+            guard let editedContact = contact else { return }
+            contacts.deleteContact(contact: editedContact)
             presentationMode.wrappedValue.dismiss()
-        }) {
+        }, label: {
             Text("DELETE_CONTACT")
                 .foregroundColor(.red)
-        }
+        })
     }
 }
 
